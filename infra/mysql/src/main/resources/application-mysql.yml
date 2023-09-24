@@ -1,0 +1,10 @@
+spring:
+  config:
+    activate:
+      on-profile: mysql-dev
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:33306/nadul
+    username: naduldev
+    password: 1q2w3e4r
