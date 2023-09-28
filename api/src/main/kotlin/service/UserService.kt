@@ -8,7 +8,7 @@ import com.example.mysql.repository.UserRepository
 @Service
 //@RequiredArgsConstructor
 class UserService (_userRepository: UserRepository) {
-    val userRepository: UserRepository = _userRepository
+    private val userRepository: UserRepository = _userRepository
 
     fun save() : UserEntity{
         val user = UserEntity()

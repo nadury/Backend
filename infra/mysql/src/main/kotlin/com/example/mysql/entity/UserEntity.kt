@@ -8,13 +8,13 @@ import javax.persistence.*
 class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private var uid : Long? = null
+    var uid : Long? = null
 
     @Column(nullable = false, unique = true)
-    private var userId : String? = null
+    var userId : String? = null
 
     @Enumerated(EnumType.STRING)
-    private var userType : UserType? = null
+    var userType : UserType? = null
 
-    private var email : String? = null
+    var email : String? = null
 }

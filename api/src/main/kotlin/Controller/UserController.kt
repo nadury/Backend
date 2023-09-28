@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody
 
 @Controller
 class UserController(_userService : UserService) {
-    private final val userService : UserService = _userService
+    private val userService : UserService = _userService
 
     @GetMapping("/test")
     fun test() : ResponseEntity<UserEntity>{

@@ -10,13 +10,13 @@ class AuthEntity() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private var id : Long? = null
+    var id : Long? = null
 
     @Column(nullable = false)
-    private var userId : Long? = null
+    var userId : Long? = null
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private var oauthProvider : OauthProvider? = null
+    var oauthProvider : OauthProvider? = null
 
 }
