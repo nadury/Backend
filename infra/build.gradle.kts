@@ -1,3 +1,4 @@
+/*
 plugins {
     kotlin("jvm") version "1.7.10"
 }
@@ -16,4 +17,4 @@ dependencies {
 
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
-}
+}*/
