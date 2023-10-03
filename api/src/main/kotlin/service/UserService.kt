@@ -1,18 +1,18 @@
 package com.example.api.service
 
 import com.example.mysql.entity.UserEntity
-import lombok.RequiredArgsConstructor
 import org.springframework.stereotype.Service
-import com.example.mysql.repository.UserRepository
+import com.example.mysql.repository.user.reader.UserReader
+import com.example.mysql.repository.user.writer.UserWriter
 
 @Service
-//@RequiredArgsConstructor
-class UserService (_userRepository: UserRepository) {
-    private val userRepository: UserRepository = _userRepository
+class UserService (_userReader: UserReader, _userWriter : UserWriter) {
+    private val userReader = _userReader
+    private val userWriter = _userWriter
 
     fun save() : UserEntity{
         val user = UserEntity()
-        userRepository.save(user);
+        userWriter.save(user);
 
         return user;
     }

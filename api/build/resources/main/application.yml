@@ -6,9 +6,9 @@ spring:
     name: nadul
 
   profiles:
-    include: mysql
+    include: mysql, oauth
     group:
-      "dev": "mysql-dev"
+      "dev": "mysql-dev, oauth-dev"
     active: dev
 
   jackson:

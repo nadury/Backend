@@ -4,6 +4,8 @@ plugins {
     kotlin("jvm") version "1.7.10"
     kotlin("plugin.spring") version "1.4.32" apply false
     kotlin("plugin.jpa") version "1.4.32" apply false
+    kotlin("plugin.lombok") version "1.7.10" apply false
+    id("io.freefair.lombok") version "8.1.0" apply false
     id("org.springframework.boot") version "2.7.9" apply false
     id("io.spring.dependency-management") version "1.0.11.RELEASE" apply false
 
@@ -36,6 +38,8 @@ subprojects{
     apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
     apply(plugin = "kotlin")
     apply(plugin = "kotlin-kapt")
+    apply(plugin = "org.jetbrains.kotlin.plugin.lombok")
+    apply(plugin = "io.freefair.lombok")
 
     dependencies {
 
@@ -49,13 +53,17 @@ subprojects{
         //runtimeOnly("com.mysql:mysql-connector-j")
 
         // util
-        compileOnly ("org.projectlombok:lombok")
-        annotationProcessor ("org.projectlombok:lombok")
+        //compileOnly ("org.projectlombok:lombok")
+        //annotationProcessor ("org.projectlombok:lombok")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
 
         // test
         testImplementation(kotlin("test"))
     }
+
+/*    kapt {
+        keepJavacAnnotationProcessors = true
+    }*/
 
     tasks.test {
         useJUnitPlatform()
@@ -65,17 +73,6 @@ subprojects{
         kotlinOptions.jvmTarget = "1.8"
     }
 
-    /*allOpen { // 추가적으로 열어줄 allOpen
-        annotation("javax.persistence.Entity")
-        annotation("javax.persistence.MappedSuperclass")
-        annotation("javax.persistence.Embeddable")
-    }
-
-    noArg {
-        annotation("javax.persistence.Entity")
-        annotation("javax.persistence.MappedSuperclass")
-        annotation("javax.persistence.Embeddable")
-    }*/
 }
 
 
