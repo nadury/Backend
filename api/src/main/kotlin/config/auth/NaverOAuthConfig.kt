@@ -21,5 +21,5 @@ class NaverOAuthConfig(
     override val redirectUrl: String = _redirectUri
     override val providerName: String = "naver"
     override var grantType: OAuthGrantType = OAuthGrantType.AUTHORIZATION_CODE
-
+    override var state: String = "NADURY_NAVER_OAUTH2_STATE"
 }

@@ -19,7 +19,7 @@ abstract class OAuthConfig {
 
     abstract val providerName : String
 
-    var state : String = "nadury_default_state"
+    open var state : String = "nadury_default_state"
 
     abstract var grantType : OAuthGrantType
 

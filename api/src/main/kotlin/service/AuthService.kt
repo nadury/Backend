@@ -13,10 +13,8 @@ class AuthService(
     private val authWriter : AuthWriter,
     private val oAuthConfigManager: OAuthConfigManager,
 ) {
-
-
     fun getOAuthLoginUrl(providerStr : String) : URI?{
-        val provider = enumValueOf<OAuthProvider>(providerStr);
+        val provider = OAuthProvider.from(providerStr.uppercase())
         val authConfig = oAuthConfigManager.getOAuthConfig(provider)
 
         return authConfig?.createLoginUrl();

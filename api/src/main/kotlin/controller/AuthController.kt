@@ -23,4 +23,6 @@ class AuthController(_authService : AuthService) {
 
         return ResponseEntity(null, header, HttpStatus.MOVED_PERMANENTLY);
     }
+
+
 }
