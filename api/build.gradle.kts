@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     implementation(project(":infra:mysql"))
+    implementation(project(":infra:httpClient"))
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-mustache")
