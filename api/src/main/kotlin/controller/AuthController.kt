@@ -31,7 +31,9 @@ class AuthController(_authService : AuthService) {
         request : HttpServletRequest,
         response: HttpServletResponse
     ) : ResponseEntity<*> {
-        // TODO: oauth login 
+        // TODO: oauth login
+
+        return ResponseEntity(null, null, HttpStatus.OK);
     }
 
 

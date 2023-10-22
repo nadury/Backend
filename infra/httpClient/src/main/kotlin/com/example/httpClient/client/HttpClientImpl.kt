@@ -9,41 +9,35 @@ import org.springframework.web.reactive.function.client.WebClient
 import java.nio.charset.StandardCharsets
 
 @Component
-class HttpClientImpl(val mapper : ObjectMapper): HttpClient {
+class HttpClientImpl(
+    val mapper : ObjectMapper,
+    val webClient : WebClient
+): HttpClient {
 
 
-    override fun <T> request(url: String, clazz: Class<T>): T? {
-        val strategies: ExchangeStrategies = ExchangeStrategies.builder()
-            .codecs { clientCodecConfigurer ->
-                clientCodecConfigurer.defaultCodecs().jackson2JsonDecoder(Jackson2JsonDecoder(mapper))
-        }.build()
+    override fun <TResult> get(url: String, clazz: Class<TResult>): TResult? = get(url, clazz, HashMap<String, String>())
 
-        val webClient = WebClient.builder()
-            .exchangeStrategies(strategies)
+    override fun <TResult> get(url: String, clazz: Class<TResult>, headers: Map<String, String>): TResult? {
+        return webClient.mutate()
             .baseUrl(url)
             .build()
-
-        return webClient.get()
+            .get()
+            .headers { header -> headers.forEach(header::add) }
             .retrieve()
             .bodyToMono(clazz)
             .block()
     }
 
-    override fun <T> request(url: String, clazz: Class<T>, headers: Map<String, String>): T? {
-        val strategies: ExchangeStrategies = ExchangeStrategies.builder()
-            .codecs { clientCodecConfigurer ->
-                clientCodecConfigurer.defaultCodecs().jackson2JsonDecoder(Jackson2JsonDecoder(mapper))
-            }.build()
+    override fun <TBody, TResult> post(url: String, body: TBody, clazz: Class<TResult>): TResult? {
+        TODO("Not yet implemented")
+    }
 
-        val webClient = WebClient.builder()
-            .exchangeStrategies(strategies)
-            .baseUrl(url)
-            .build()
-
-        return webClient.get()
-            .headers { header -> headers.forEach(header::add) }
-            .retrieve()
-            .bodyToMono(clazz)
-            .block()
+    override fun <TBody, TResult> post(
+        url: String,
+        body: TBody,
+        clazz: Class<TResult>,
+        headers: Map<String, String>
+    ): TResult? {
+        TODO("Not yet implemented")
     }
 }
