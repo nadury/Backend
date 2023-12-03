@@ -24,7 +24,7 @@ abstract class OAuthConfig {
     abstract var grantType : OAuthGrantType
 
 
-    fun createLoginUrl() : URI {
+    open fun createLoginUrl() : URI {
         return UriComponentsBuilder.newInstance()
             .uri(URI.create(loginUrl))
             .queryParam("response_type", "code")
@@ -35,7 +35,7 @@ abstract class OAuthConfig {
             .toUri()
     }
 
-    fun createTokenUrl(code : String) : URI {
+    open fun createTokenUrl(code : String) : URI {
         return UriComponentsBuilder.newInstance()
             .uri(URI.create(tokenUrl))
             .queryParam("grant_type", grantType.grantType)
